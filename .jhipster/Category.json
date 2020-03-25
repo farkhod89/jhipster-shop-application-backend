@@ -1,0 +1,122 @@
+{
+    "name": "Category",
+    "fields": [
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "1",
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "nameUz",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "1",
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "alias",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "1",
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "sorting",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "-9999",
+            "fieldValidateRulesMax": "9999"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "main",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "file",
+            "otherEntityRelationshipName": "category",
+            "relationshipName": "file",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "page",
+            "otherEntityRelationshipName": "category",
+            "relationshipName": "page",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "page",
+            "otherEntityRelationshipName": "category",
+            "relationshipName": "pageUz",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "category",
+            "otherEntityRelationshipName": "parent",
+            "relationshipName": "children"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "category",
+            "otherEntityRelationshipName": "children",
+            "relationshipName": "parent",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200325115500",
+    "entityTableName": "category",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

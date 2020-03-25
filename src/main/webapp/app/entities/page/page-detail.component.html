@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="page">
+            <h2><span>Page</span> {{ page.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Seo Name</span></dt>
+                <dd>
+                    <span>{{ page.seoName }}</span>
+                </dd>
+                <dt><span>Seo Title</span></dt>
+                <dd>
+                    <span>{{ page.seoTitle }}</span>
+                </dd>
+                <dt><span>Seo Description</span></dt>
+                <dd>
+                    <span>{{ page.seoDescription }}</span>
+                </dd>
+                <dt><span>Seo Keys</span></dt>
+                <dd>
+                    <span>{{ page.seoKeys }}</span>
+                </dd>
+                <dt><span>Content Top</span></dt>
+                <dd>
+                    <span>{{ page.contentTop }}</span>
+                </dd>
+                <dt><span>Content Bottom</span></dt>
+                <dd>
+                    <span>{{ page.contentBottom }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/page', page.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
