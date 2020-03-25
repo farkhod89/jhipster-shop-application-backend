@@ -1,0 +1,180 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-category-heading">Create or edit a Category</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdAt">Created At</label>
+                    <div class="d-flex">
+                        <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" formControlName="createdAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updatedAt">Updated At</label>
+                    <div class="d-flex">
+                        <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" formControlName="updatedAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.minlength">
+                        This field is required to be at least 1 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.maxlength">
+                        This field cannot be longer than 255 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nameUz">Name Uz</label>
+                    <input type="text" class="form-control" name="nameUz" id="field_nameUz"
+                           formControlName="nameUz"/>
+                    <div *ngIf="editForm.get('nameUz')!.invalid && (editForm.get('nameUz')!.dirty || editForm.get('nameUz')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameUz')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameUz')?.errors?.minlength">
+                        This field is required to be at least 1 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameUz')?.errors?.maxlength">
+                        This field cannot be longer than 255 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_alias">Alias</label>
+                    <input type="text" class="form-control" name="alias" id="field_alias"
+                           formControlName="alias"/>
+                    <div *ngIf="editForm.get('alias')!.invalid && (editForm.get('alias')!.dirty || editForm.get('alias')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('alias')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('alias')?.errors?.minlength">
+                        This field is required to be at least 1 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('alias')?.errors?.maxlength">
+                        This field cannot be longer than 255 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_sorting">Sorting</label>
+                    <input type="number" class="form-control" name="sorting" id="field_sorting"
+                           formControlName="sorting"/>
+                    <div *ngIf="editForm.get('sorting')!.invalid && (editForm.get('sorting')!.dirty || editForm.get('sorting')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sorting')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sorting')?.errors?.min">
+                            This field should be at least -9999.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sorting')?.errors?.max">
+                            This field cannot be more than 9999.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('sorting')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status">Status</label>
+                    <input type="checkbox" class="form-control" name="status" id="field_status"
+                           formControlName="status"/>
+                    <div *ngIf="editForm.get('status')!.invalid && (editForm.get('status')!.dirty || editForm.get('status')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('status')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_main">Main</label>
+                    <input type="checkbox" class="form-control" name="main" id="field_main"
+                           formControlName="main"/>
+                    <div *ngIf="editForm.get('main')!.invalid && (editForm.get('main')!.dirty || editForm.get('main')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('main')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_file">File</label>
+                    <select class="form-control" id="field_file" name="file" formControlName="fileId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="fileOption.id" *ngFor="let fileOption of files; trackBy: trackById">{{ fileOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_page">Page</label>
+                    <select class="form-control" id="field_page" name="page" formControlName="pageId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="pageOption.id" *ngFor="let pageOption of pages; trackBy: trackById">{{ pageOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pageUz">Page Uz</label>
+                    <select class="form-control" id="field_pageUz" name="pageUz" formControlName="pageUzId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="pageOption.id" *ngFor="let pageOption of pageuzs; trackBy: trackById">{{ pageOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_parent">Parent</label>
+                    <select class="form-control" id="field_parent" name="parent" formControlName="parentId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="categoryOption.id" *ngFor="let categoryOption of categories; trackBy: trackById">{{ categoryOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

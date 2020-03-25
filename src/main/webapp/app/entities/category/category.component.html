@@ -1,0 +1,99 @@
+<div>
+    <h2 id="page-heading">
+        <span>Categories</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-category" [routerLink]="['/category/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Category
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="categories?.length === 0">
+        <span>No categories found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="categories?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Created At</span></th>
+                    <th scope="col" ><span>Updated At</span></th>
+                    <th scope="col" ><span>Name</span></th>
+                    <th scope="col" ><span>Name Uz</span></th>
+                    <th scope="col" ><span>Alias</span></th>
+                    <th scope="col" ><span>Sorting</span></th>
+                    <th scope="col" ><span>Status</span></th>
+                    <th scope="col" ><span>Main</span></th>
+                    <th scope="col" ><span>File</span></th>
+                    <th scope="col" ><span>Page</span></th>
+                    <th scope="col" ><span>Page Uz</span></th>
+                    <th scope="col" ><span>Parent</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let category of categories ;trackBy: trackId">
+                    <td><a [routerLink]="['/category', category.id, 'view']">{{ category.id }}</a></td>
+                    <td>{{ category.createdAt | date:'medium' }}</td>
+                    <td>{{ category.updatedAt | date:'medium' }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.nameUz }}</td>
+                    <td>{{ category.alias }}</td>
+                    <td>{{ category.sorting }}</td>
+                    <td>{{ category.status }}</td>
+                    <td>{{ category.main }}</td>
+                    <td>
+                        <div *ngIf="category.fileId">
+                            <a [routerLink]="['/file', category.fileId , 'view']" >{{ category.fileId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="category.pageId">
+                            <a [routerLink]="['/page', category.pageId , 'view']" >{{ category.pageId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="category.pageUzId">
+                            <a [routerLink]="['/page', category.pageUzId , 'view']" >{{ category.pageUzId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="category.parentId">
+                            <a [routerLink]="['/category', category.parentId , 'view']" >{{ category.parentId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/category', category.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/category', category.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(category)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

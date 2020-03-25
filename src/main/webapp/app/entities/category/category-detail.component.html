@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="category">
+            <h2><span>Category</span> {{ category.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Created At</span></dt>
+                <dd>
+                    <span>{{ category.createdAt }}</span>
+                </dd>
+                <dt><span>Updated At</span></dt>
+                <dd>
+                    <span>{{ category.updatedAt }}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ category.name }}</span>
+                </dd>
+                <dt><span>Name Uz</span></dt>
+                <dd>
+                    <span>{{ category.nameUz }}</span>
+                </dd>
+                <dt><span>Alias</span></dt>
+                <dd>
+                    <span>{{ category.alias }}</span>
+                </dd>
+                <dt><span>Sorting</span></dt>
+                <dd>
+                    <span>{{ category.sorting }}</span>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{ category.status }}</span>
+                </dd>
+                <dt><span>Main</span></dt>
+                <dd>
+                    <span>{{ category.main }}</span>
+                </dd>
+                <dt><span>File</span></dt>
+                <dd>
+                    <div *ngIf="category.fileId">
+                        <a [routerLink]="['/file', category.fileId, 'view']">{{ category.fileId }}</a>
+                    </div>
+                </dd>
+                <dt><span>Page</span></dt>
+                <dd>
+                    <div *ngIf="category.pageId">
+                        <a [routerLink]="['/page', category.pageId, 'view']">{{ category.pageId }}</a>
+                    </div>
+                </dd>
+                <dt><span>Page Uz</span></dt>
+                <dd>
+                    <div *ngIf="category.pageUzId">
+                        <a [routerLink]="['/page', category.pageUzId, 'view']">{{ category.pageUzId }}</a>
+                    </div>
+                </dd>
+                <dt><span>Parent</span></dt>
+                <dd>
+                    <div *ngIf="category.parentId">
+                        <a [routerLink]="['/category', category.parentId, 'view']">{{ category.parentId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/category', category.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
