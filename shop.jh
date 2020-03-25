@@ -1,0 +1,45 @@
+entity File {
+	createdAt Instant
+    fileName String required
+    fileType String required
+    filePath String required
+}
+entity Page {
+	seoName String maxlength(255)
+    seoTitle String maxlength(255)
+    seoDescription String maxlength(255)
+    seoKeys String maxlength(255)
+    contentTop String
+    contentBottom String
+}
+
+entity Category {
+	createdAt Instant
+    updatedAt Instant
+	name String required minlength(1) maxlength(255)
+    nameUz String required minlength(1) maxlength(255)
+    alias String required unique minlength(1) maxlength(255)
+    sorting Integer required min(-9999) max(9999)
+    status Boolean required
+    main Boolean required
+}
+relationship OneToMany {
+	Category{children} to Category{parent} 
+}
+relationship OneToOne {
+	Category{file} to File
+    Category{page} to Page
+    Category{pageUz} to Page
+}
+
+
+
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Category
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
